@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import userRoutes from './Routes/user.routes'
 import dotenv from 'dotenv'
+import asd from './env'
 
 dotenv.config()
 const PORT = process.env.PORT || 5000

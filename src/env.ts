@@ -11,6 +11,7 @@ let env: Record<string, any> = {
   ...process.env,
   ...getEnv(),
 }
+
 process.env = env
 export default env
 
@@ -19,6 +20,7 @@ function getEnv() {
     process.env.PWD || defaults.CONFIG_PATH,
     '.env',
   )
+
   if (fs.existsSync(configPath) === false) return {}
   return dotenv.parse(fs.readFileSync(configPath, { encoding: 'utf8' }))
 }
