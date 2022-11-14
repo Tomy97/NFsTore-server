@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      lastName: {
+      user: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -26,11 +26,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      role: {
+      avatar: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      token: {
+      permissions: {
         type: Sequelize.STRING,
         allowNull: true,
       },

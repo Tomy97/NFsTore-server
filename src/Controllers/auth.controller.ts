@@ -20,10 +20,10 @@ export const authLogin = async (req: Request, res: Response) => {
         })
     }
 
-    const token = await generateJWT(usuario.id)
+    // const token = await generateJWT(usuario.id)
     res.json({
         usuario,
-        token
+        // token
     })
   } catch (err) {
     return res.status(500).json({ message: err })

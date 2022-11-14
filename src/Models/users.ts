@@ -13,11 +13,11 @@ export class Users extends Model<
 > {
   declare id: CreationOptional<number>
   declare name: string
-  declare lastName: string
+  declare user: string
   declare email: string
   declare password: string
-  declare role: string
-  declare token: string
+  declare avatar: string
+  declare permissions: string
 }
 
 Users.init(
@@ -31,7 +31,7 @@ Users.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastname: {
+    user: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -44,11 +44,11 @@ Users.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    role: {
+    avatar: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    token: {
+    permissions: {
       type: DataTypes.STRING,
       allowNull: true,
     },
