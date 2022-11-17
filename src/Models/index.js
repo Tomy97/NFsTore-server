@@ -45,4 +45,39 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 
+
+db.nft = require('./neft.model.ts')(sequelize,DataTypes)
+db.user = require('./user.model.ts')(sequelize,DataTypes)
+db.collection = require('./collection.model.ts')(sequelize,DataTypes)
+
+db.user.hasOne(db.nft,{
+  foreingKey: 'create_id',
+  as: 'nft'
+})
+
+db.nft.belongsTo(db.user,{
+  foreingKey: 'create_id',
+  as: 'user'
+})
+
+db.user.hasOne(db.nft,{
+  foreingKey: 'owner_id',
+  as: 'nft'
+})
+
+db.nft.belongsTo(db.user,{
+  foreingKey: 'owner_id',
+  as: 'user'
+})
+db.nft.hasMany(db.collection,{
+  foreingKey: 'nft_id',
+  as: 'collection'
+})
+
+db.collection.belongsTo(db.nft,{
+  foreingKey: 'nft_id',
+  as: 'nft'
+})
+
+
 module.exports = db
