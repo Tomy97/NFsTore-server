@@ -3,14 +3,14 @@ import { Response, Request } from "express";
 import { generateJWT } from "../Helper/generate-jwt";
 import { validationResult } from "express-validator";
 
-export const authLogin = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+export const loginUser = async (req: Request, res: Response) => {
+  const { user, password } = req.body;
   try {
     const usuario = await Users.findOne();
-    if (!email) {
+    if (!user) {
       return res.status(400).json({
         ok: false,
-        msg: "El email es obligatorio"
+        msg: "El user es obligatorio"
       });
     }
     if (!password) {
@@ -19,12 +19,23 @@ export const authLogin = async (req: Request, res: Response) => {
         msg: "La contraseña es obligatoria"
       });
     }
-
-    // const token = await generateJWT(usuario.id)
-    res.json({
-      usuario
-      // token
-    });
+    if (usuario) {
+      if (usuario.user === user && usuario.password === password) {
+        return res.json({
+          usuario
+        });
+      } else {
+        return res.status(400).json({
+          ok: false,
+          msg: "El user o la contraseña no son correctos"
+        });
+      }
+    } else {
+      return res.status(400).json({
+        ok: false,
+        msg: "El user o la contraseña no son correctos"
+      });
+    }
   } catch (err) {
     return res.status(500).json({ message: err });
   }
