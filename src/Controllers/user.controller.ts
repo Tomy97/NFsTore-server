@@ -15,11 +15,11 @@ export const getUsersController = async (req: any, res: Response) => {
 export const postUsersController = async (req: any, res: Response) => {
   try {
     const user = await Users.create(req.body)
-    if (user.getDataValue('email') === req.body.email) {
+    if (user.getDataValue('user') === req.body.user) {
       console.log('User created successfully')
-    } else if (user.getDataValue('email') !== req.body.email) {
+    } else if (user.getDataValue('user') !== req.body.user) {
       console.log('User not created')
-    } else if (user.getDataValue('email') === null) {
+    } else if (user.getDataValue('user') === null) {
       console.log('User not created')
     }
 
