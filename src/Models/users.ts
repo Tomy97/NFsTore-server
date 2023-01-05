@@ -46,10 +46,12 @@ Users.init(
     },
     avatar: {
       type: DataTypes.STRING,
+      defaultValue: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg',
       allowNull: false,
     },
     permissions: {
       type: DataTypes.STRING,
+      defaultValue: 'user',
       allowNull: true,
     },
   },
