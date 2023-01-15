@@ -1,17 +1,25 @@
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
-export const generateJWT = (uid: string) => {
-    return new Promise((resolve, reject) => {
-        const payload = {uid};
-        // jwt.sign(payload, process.env.SECRETORPRIVATEKEY, {
-        //     expiresIn: '4h'
-        // }, (err, token) => {
-        //     if (err) {
-        //         console.log(err);
-        //         reject('No se pudo generar el token');
-        //     } else {
-        //         resolve(token);
-        //     }
-        // }
-    });
-}
+dotenv.config();
+
+export const generateJWT = (uid: number) => {
+  return new Promise((resolve, reject) => {
+    const payload = { uid };
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET || "",
+      {
+        expiresIn: "4h"
+      },
+      (err, token) => {
+        if (err) {
+          console.log(err);
+          reject("No se pudo generar el token");
+        } else {
+          resolve(token);
+        }
+      }
+    );
+  });
+};

@@ -1,28 +1,24 @@
 import { Users } from "../Models/users";
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from "express";
 import { generateJWT } from "../Helper/generate-jwt";
 import { validationResult } from "express-validator";
+import jwt from "jsonwebtoken";
 
-export const loginUser = async (req: Request, res: Response) => {
+export const loginUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const { user, password } = req.body;
   try {
-    const usuario = await Users.findOne();
-    if (!user) {
-      return res.status(400).json({
-        ok: false,
-        msg: "El user es obligatorio"
-      });
-    }
-    if (!password) {
-      return res.status(400).json({
-        ok: false,
-        msg: "La contraseña es obligatoria"
-      });
-    }
+    const usuario = await Users.findOne({ where: { user: user } });
     if (usuario) {
+      const token = await generateJWT(usuario.id);
+
       if (usuario.user === user && usuario.password === password) {
         return res.json({
-          usuario
+          usuario,
+          token
         });
       } else {
         return res.status(400).json({
