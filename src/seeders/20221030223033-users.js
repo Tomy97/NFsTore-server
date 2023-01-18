@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,17 +12,17 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert('users', [
+    await queryInterface.bulkInsert("users", [
       {
-        id: 1,
-        name: 'Tomas',
-        lastName: 'Pandullo',
-        email: 'test@test.com',
-        password: '12345567',
-        role: 'admin',
-        token: 'asdiabduahsbvduhdbashdb129387123u9hkjnjkad',
+        name: "Tomas Tester",
+        user: "TomasAdmin",
+        email: "tomas@admin.com",
+        password: "admin123",
+        avatar:
+          "https://i.pinimg.com/736x/6c/58/63/6c58639e559e18af2bc77b08d909699f.jpg",
+        permissions: "admin",
       },
-    ])
+    ]);
   },
 
   async down(queryInterface, Sequelize) {
@@ -33,4 +33,4 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
   },
-}
+};
