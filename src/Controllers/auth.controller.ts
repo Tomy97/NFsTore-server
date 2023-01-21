@@ -9,12 +9,11 @@ export const loginUser = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { user, password } = req.body;
+  const { user, password, email } = req.body;
   try {
     const usuario = await Users.findOne({ where: { user: user } });
     if (usuario) {
       const token = await generateJWT(usuario.id);
-
       if (usuario.user === user && usuario.password === password) {
         return res.json({
           usuario,
@@ -41,6 +40,13 @@ export const registerUser = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
   try {
     if (name && email && password) {
+      const emailExist = await Users.findOne({ where: { email: email } });
+      if (emailExist) {
+        return res.status(400).json({
+          ok: false,
+          msg: "El email ya esta registrado"
+        });
+      }
       const usuario = new Users(req.body);
       await usuario.toJSON();
       await usuario.save();
