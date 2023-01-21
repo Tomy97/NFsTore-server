@@ -7,7 +7,7 @@ import {
 } from "sequelize";
 import sequelize from "../Conections";
 
-export class Balance extends Model<
+export class Balances extends Model<
   InferAttributes<any>,
   InferCreationAttributes<any>
 > {
@@ -15,7 +15,7 @@ export class Balance extends Model<
   declare monto: number;
 }
 
-Balance.init(
+Balances.init(
   {
     user_id: {
       type: DataTypes.INTEGER,
@@ -31,9 +31,9 @@ Balance.init(
     }
   },
   {
-    tableName: "balance",
+    tableName: "balances",
     sequelize
   }
 );
 
-Balance.hasOne(Users, { foreignKey: "userId" });
+Balances.hasOne(Users, { foreignKey: "userId" });
