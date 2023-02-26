@@ -20,7 +20,6 @@ module.exports = {
       nft_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         references: {
           model: "Nfts",
           key: "id"
@@ -29,7 +28,6 @@ module.exports = {
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
         references: {
           model: "Users",
           key: "id"
