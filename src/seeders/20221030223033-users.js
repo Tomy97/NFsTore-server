@@ -14,13 +14,14 @@ module.exports = {
      */
     await queryInterface.bulkInsert("users", [
       {
-        name: "Tomas Tester",
-        user: "TomasAdmin",
-        email: "tomas@admin.com",
-        password: "admin123",
-        avatar:
-          "https://i.pinimg.com/736x/6c/58/63/6c58639e559e18af2bc77b08d909699f.jpg",
-        permissions: "admin",
+        // id: 1,
+        user: 'Tomas123',
+        name: 'Tomas Pandullo',
+        email: 'test@test.com',
+        password: '12345567',
+        permissions: 'admin',
+        avatar: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fsoundcloud.com%2Frealgallo&psig=AOvVaw20Pmkctpvn9E31HxbJdEaw&ust=1670875112711000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIjFroSt8vsCFQAAAAAdAAAAABAE'
+        // token: 'asdiabduahsbvduhdbashdb129387123u9hkjnjkad',
       },
     ]);
   },

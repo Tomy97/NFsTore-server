@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       price: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -21,11 +25,20 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         unique: true,
+        references: {
+          model: "Users",
+          key: "id"
+        }
       },
+      
       owner_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         unique: true,
+        references: {
+          model: "Users",
+          key: "id"
+        }
       },
     });
   },

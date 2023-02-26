@@ -11,6 +11,10 @@ export const Nft = sequelize.define("nft", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   price: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -19,10 +23,18 @@ export const Nft = sequelize.define("nft", {
     type: DataTypes.INTEGER,
     allowNull: false,
     unique: true,
+    references: { 
+      model: 'User', 
+      key: 'id' 
+    } 
   },
   owner_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     unique: true,
+    references: { 
+      model: 'User', 
+      key: 'id' 
+  } 
   },
 });
