@@ -17,7 +17,7 @@ module.exports = {
         // id: 1,
         name: 'Monkeys',
         user_id: 1,
-        nft_id: [1,2,3,4],
+        type: 1,
       },
     ]);
   },

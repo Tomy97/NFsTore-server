@@ -46,37 +46,40 @@ db.sequelize = sequelize
 db.Sequelize = Sequelize
 
 
-db.nft = require('./neft.model.ts')(sequelize,DataTypes)
-db.user = require('./user.model.ts')(sequelize,DataTypes)
-db.collection = require('./collection.model.ts')(sequelize,DataTypes)
+db.nfts = require('./neft.model.ts')(sequelize,DataTypes)
+db.users = require('./user.model.ts')(sequelize,DataTypes)
+db.collections = require('./collection.model.ts')(sequelize,DataTypes)
+db.collectionNfts = require('./collectionNfts.model.ts')(sequelize,DataTypes)
 
-db.user.hasOne(db.nft,{
+db.users.hasOne(db.nfts,{
   foreingKey: 'create_id',
-  as: 'nft'
+  as: 'nfts'
 })
 
-db.nft.belongsTo(db.user,{
+db.nfts.belongsTo(db.users,{
   foreingKey: 'create_id',
-  as: 'user'
+  as: 'users'
 })
 
-db.user.hasOne(db.nft,{
+db.users.hasOne(db.nfts,{
   foreingKey: 'owner_id',
-  as: 'nft'
+  as: 'nfts'
 })
 
-db.nft.belongsTo(db.user,{
+db.nfts.belongsTo(db.users,{
   foreingKey: 'owner_id',
-  as: 'user'
+  as: 'users'
 })
-db.nft.hasMany(db.collection,{
+db.nfts.belongsToMany(db.collections,{
+  through: collectionNfts, 
   foreingKey: 'nft_id',
-  as: 'collection'
+  as: 'collections'
 })
 
-db.collection.belongsTo(db.nft,{
+db.collections.belongsToMany(db.nfts,{
+  through: collectionNfts, 
   foreingKey: 'nft_id',
-  as: 'nft'
+  as: 'nfts'
 })
 
 

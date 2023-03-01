@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../Conections";
 
-export const Nft = sequelize.define("nft", {
+export const Nfts = sequelize.define("nfts", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -24,7 +24,7 @@ export const Nft = sequelize.define("nft", {
     allowNull: false,
     unique: true,
     references: { 
-      model: 'User', 
+      model: 'Users', 
       key: 'id' 
     } 
   },
@@ -33,7 +33,7 @@ export const Nft = sequelize.define("nft", {
     allowNull: false,
     unique: true,
     references: { 
-      model: 'User', 
+      model: 'Users', 
       key: 'id' 
   } 
   },

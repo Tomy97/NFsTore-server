@@ -1,26 +1,27 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../Conections";
 
-export const Collections = sequelize.define("collections", {
+export const CollectionNfts = sequelize.define("collectionNfts", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  type: {
+  nft_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    unique: true,
+    references:{
+      model: 'Nfts',
+      key: 'id'
+    }
   },
-  user_id: {
+  collection_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     unique: true,
     references: {
-      model: 'Users',
+      model: 'Collections',
       key: 'id'
     }
   },

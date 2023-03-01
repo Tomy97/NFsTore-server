@@ -2,32 +2,32 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("collections", {
+    await queryInterface.createTable("collectionNfts", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      type: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      user_id: {
+      nft_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Users",
+          model: "Nfts",
+          key: "id"
+        }
+      },
+      collection_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "Collections",
           key: "id"
         }
       },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("collections");
+    await queryInterface.dropTable("collectionNtfs");
   },
 };
