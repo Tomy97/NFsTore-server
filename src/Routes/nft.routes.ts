@@ -4,7 +4,7 @@ import {
   getNftById,
   createNft,
   updateNft,
-  deleteNft,
+  deleteNft
 } from "../Controllers/nft.controller";
 const router = Router();
 const MODEL = 'nft'
