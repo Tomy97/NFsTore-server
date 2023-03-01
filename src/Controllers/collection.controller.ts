@@ -1,4 +1,5 @@
-import { Collection } from '../Models/collection';
+
+import { Collection } from '../models/transactions';
 import { Response } from 'express';
 
 exports.getCollections = async (req: any, res: Response) => {
@@ -18,7 +19,7 @@ exports.getCollectionById = async (req: any, res: Response) => {
     } else {
       res.json(collection);
     }
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
 };
@@ -28,7 +29,7 @@ exports.createCollection = async (req: any, res: Response) => {
   try {
     const collection = await Collection.create({ name, user_id, type });
     res.status(201).json(collection);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
 };
@@ -42,7 +43,7 @@ exports.updateCollection = async (req: any, res: Response) => {
     } else {
       res.status(200).json({ message: 'Colección actualizada correctamente' });
     }
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
 };
@@ -55,7 +56,7 @@ exports.deleteCollection = async (req: any, res: Response) => {
     } else {
       res.status(204).json();
     }
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
 };

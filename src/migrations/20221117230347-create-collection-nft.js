@@ -13,17 +13,17 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Nfts",
-          key: "id"
-        }
+          model: "nfts",
+          key: "id",
+        },
       },
       collection_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Collections",
-          key: "id"
-        }
+          model: "collection",
+          key: "id",
+        },
       },
     });
   },

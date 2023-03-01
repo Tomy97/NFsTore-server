@@ -1,5 +1,8 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../Conections";
+import { Collections } from "./collection";
+import { Nfts } from "./nft";
+
 
 export const CollectionNfts = sequelize.define("collectionNfts", {
   id: {
@@ -11,18 +14,18 @@ export const CollectionNfts = sequelize.define("collectionNfts", {
     type: DataTypes.INTEGER,
     allowNull: false,
     unique: true,
-    references:{
-      model: 'Nfts',
-      key: 'id'
-    }
+    references: {
+      model: Nfts,
+      key: "id",
+    },
   },
   collection_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     unique: true,
     references: {
-      model: 'Collections',
-      key: 'id'
-    }
+      model: Collections,
+      key: "id",
+    },
   },
 });
