@@ -7,7 +7,7 @@ export const Nfts = sequelize.define("nfts", {
     autoIncrement: true,
     primaryKey: true,
   },
-  link: {
+  image_url: {
     type: DataTypes.STRING,
     allowNull: false,
   },
