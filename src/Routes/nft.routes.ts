@@ -1,25 +1,23 @@
 import { Router } from "express";
 import {
-  getNfts,
-  getNftById,
-  createNft,
-  updateNft,
-  deleteNft
+  createNfts,
+  deleteNfts,
+  getAllNfts,
+  getNftsById,
+  updateNfts,
 } from "../Controllers/nft.controller";
 const router = Router();
+
 const MODEL = 'nft'
-// Obtener todos los Nfts
-router.get(`/${MODEL}`, getNfts);
 
-// Obtener un Nft por su id
-router.get(`/${MODEL}/:id`, getNftById);
+router.get(`/${MODEL}`, getAllNfts);
 
-// Crear un nuevo Nft
-router.post(`/${MODEL}`, createNft);
+router.get(`/${MODEL}/:id`, getNftsById);
 
-// Actualizar un Nft existente
-router.put(`/${MODEL}/:id`, updateNft);
+router.post(`/${MODEL}`, createNfts);
 
-// Eliminar un Nft existente
-router.delete(`/${MODEL}/:id`, deleteNft);
+router.put(`/${MODEL}/:id`, updateNfts);
+
+router.delete(`/${MODEL}/:id`, deleteNfts);
+
 export default router;

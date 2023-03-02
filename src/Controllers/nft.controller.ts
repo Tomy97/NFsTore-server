@@ -1,8 +1,7 @@
-import { Nfts } from "../models/nft";
+import { Nfts } from "../Models/nft";
 import { Response } from "express";
 
-// Obtener todos los Nftsss
-const getAllNftsss = async (req: any, res: Response) => {
+export const getAllNfts = async (req: any, res: Response) => {
   try {
     const nft = await Nfts.findAll();
     res.status(200).json(nft);
@@ -11,8 +10,7 @@ const getAllNftsss = async (req: any, res: Response) => {
   }
 };
 
-// Obtener un Nftss por su ID
-const getNftssById = async (req: any, res: Response) => {
+export const getNftsById = async (req: any, res: Response) => {
   const { id } = req.params;
   try {
     const nft = await Nfts.findByPk(id);
@@ -26,8 +24,7 @@ const getNftssById = async (req: any, res: Response) => {
   }
 };
 
-// Crear un nuevo Nftss
-const createNftss = async (req: any, res: Response) => {
+export const createNfts = async (req: any, res: Response) => {
   const { title, description, image } = req.body;
   try {
     const newNftss = await Nfts.create({ title, description, image });
@@ -37,8 +34,7 @@ const createNftss = async (req: any, res: Response) => {
   }
 };
 
-// Actualizar un Nftss existente
-const updateNftss = async (req: any, res: Response) => {
+export const updateNfts = async (req: any, res: Response) => {
   const { id } = req.params;
   const { title, description, image } = req.body;
   try {
@@ -56,8 +52,7 @@ const updateNftss = async (req: any, res: Response) => {
   }
 };
 
-// Eliminar un Nftsss existente
-exports.deleteNftsss = async (req: any, res: Response) => {
+export const  deleteNfts = async (req: any, res: Response) => {
   const id = req.params.id;
   try {
     const nftId = await Nfts.findByPk(id);
