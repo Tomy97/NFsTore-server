@@ -1,23 +1,23 @@
 import { Router } from "express";
 import {
-  createNfts,
-  deleteNfts,
-  getAllNfts,
-  getNftsById,
-  updateNfts,
+  getAllNftsController,
+  getNftsByIdController,
+  createNftsController,
+  updateNftsController,
+  deleteNftsController,
 } from "../Controllers/nft.controller";
 const router = Router();
 
 const MODEL = 'nft'
 
-router.get(`/${MODEL}`, getAllNfts);
+router.get(`/${MODEL}`, getAllNftsController);
 
-router.get(`/${MODEL}/:id`, getNftsById);
+router.get(`/${MODEL}/:id`, getNftsByIdController);
 
-router.post(`/${MODEL}`, createNfts);
+router.post(`/${MODEL}`, createNftsController);
 
-router.put(`/${MODEL}/:id`, updateNfts);
+router.put(`/${MODEL}/:id`, updateNftsController);
 
-router.delete(`/${MODEL}/:id`, deleteNfts);
+router.delete(`/${MODEL}/:id`, deleteNftsController);
 
 export default router;

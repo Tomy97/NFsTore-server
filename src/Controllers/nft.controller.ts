@@ -1,16 +1,18 @@
 import { Nfts } from "../Models/nft";
 import { Response } from "express";
 
-export const getAllNfts = async (req: any, res: Response) => {
+export const getAllNftsController = async (req: any, res: Response) => {
   try {
-    const nft = await Nfts.findAll();
+    const nft = await Nfts.findAll({
+      attributes: req.attributes,
+    });
     res.status(200).json(nft);
   } catch (err) {
     res.status(500).json({ error: err });
   }
 };
 
-export const getNftsById = async (req: any, res: Response) => {
+export const getNftsByIdController = async (req: any, res: Response) => {
   const { id } = req.params;
   try {
     const nft = await Nfts.findByPk(id);
@@ -24,7 +26,7 @@ export const getNftsById = async (req: any, res: Response) => {
   }
 };
 
-export const createNfts = async (req: any, res: Response) => {
+export const createNftsController = async (req: any, res: Response) => {
   const { title, description, image } = req.body;
   try {
     const newNftss = await Nfts.create({ title, description, image });
@@ -34,7 +36,7 @@ export const createNfts = async (req: any, res: Response) => {
   }
 };
 
-export const updateNfts = async (req: any, res: Response) => {
+export const updateNftsController = async (req: any, res: Response) => {
   const { id } = req.params;
   const { title, description, image } = req.body;
   try {
@@ -52,7 +54,7 @@ export const updateNfts = async (req: any, res: Response) => {
   }
 };
 
-export const  deleteNfts = async (req: any, res: Response) => {
+export const  deleteNftsController = async (req: any, res: Response) => {
   const id = req.params.id;
   try {
     const nftId = await Nfts.findByPk(id);
