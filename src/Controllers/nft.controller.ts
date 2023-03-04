@@ -1,10 +1,14 @@
 import { Nfts } from "../Models/nft";
 import { Response } from "express";
-
+import { Users } from '../Models/users'
 export const getAllNftsController = async (req: any, res: Response) => {
   try {
     const nft = await Nfts.findAll({
       attributes: req.attributes,
+      // include: [
+      //   { model: Users, as: 'create', attributes: ['id', 'email'] },
+      //   { model: Users, as: 'owner', attributes: ['id',  'email'] }
+      // ],
     });
     res.status(200).json(nft);
   } catch (err) {

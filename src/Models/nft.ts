@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../Conections";
-
+import { Users } from '../Models/users'
 export const Nfts = sequelize.define("nfts", {
   id: {
     type: DataTypes.INTEGER,
@@ -24,8 +24,8 @@ export const Nfts = sequelize.define("nfts", {
     allowNull: false,
     unique: true,
     references: { 
-      model: 'Users', 
-      key: 'id' 
+      model: 'users', 
+      key: 'id',
     } 
   },
   owner_id: {
@@ -33,8 +33,14 @@ export const Nfts = sequelize.define("nfts", {
     allowNull: false,
     unique: true,
     references: { 
-      model: 'Users', 
+      model: 'users', 
       key: 'id' 
-  } 
+    },
   },
 });
+  
+  
+  
+  
+  
+  

@@ -12,8 +12,11 @@ export const loginUser = async (
   const { user, password, email } = req.body;
   try {
     const usuario = await Users.findOne({ where: { user: user } });
+    console.log('llege',usuario,user,password);
     if (usuario) {
       const token = await generateJWT(usuario.id);
+      console.log('llege',usuario,user,password);
+        
       if (usuario.user === user && usuario.password === password) {
         return res.json({
           usuario,
